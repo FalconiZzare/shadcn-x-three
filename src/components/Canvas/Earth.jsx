@@ -1,25 +1,25 @@
 import { Suspense } from "react";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
 import CanvasLoader from "@/components/Canvas/Loader.jsx";
 
 const Earth = () => {
-  const location = useLocation();
-  const nestingCount = location.pathname.split("/").length - 1;
+  // const location = useLocation();
+  // const nestingCount = location.pathname.split("/").length - 1;
 
-  const pathBuilder = () => {
-    let path = "../";
-    if (nestingCount <= 0) return path;
-    else {
-      path = "";
-      for (let index = 0; index < nestingCount; index++) {
-        path += "../";
-      }
-      return path;
-    }
-  };
+  // const pathBuilder = () => {
+  //   let path = "../";
+  //   if (nestingCount <= 0) return path;
+  //   else {
+  //     path = "";
+  //     for (let index = 0; index < nestingCount; index++) {
+  //       path += "../";
+  //     }
+  //     return path;
+  //   }
+  // };
 
   const stylizedEarth = useGLTF(`./3DModels/stylized_planet/stylized_planet.glb`);
   return <primitive object={stylizedEarth.scene} scale={2.5} position-y={0} rotation-y={0} />;

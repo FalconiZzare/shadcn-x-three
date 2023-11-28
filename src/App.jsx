@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { ThemeProvider } from "@/layouts/Theme/ThemeProvider.jsx";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import RouteTable from "@/routes/RouteTable.jsx";
 import Header from "@/layouts/Header/Header.jsx";
 import { themes } from "@/registry/themes.js";
@@ -32,7 +32,7 @@ const App = () => {
   }, [config]);
 
   return (
-    <BrowserRouter future={{ v7_startTransition: true }}>
+    <HashRouter future={{ v7_startTransition: true }}>
       <ThemeProvider
         defaultTheme={"system"}
         attribute={"class"}
@@ -45,7 +45,7 @@ const App = () => {
           <Footer />
         </div>
       </ThemeProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
