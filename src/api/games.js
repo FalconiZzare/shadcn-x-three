@@ -20,8 +20,14 @@ export const getGame = gql`
 export const getGames = gql`
   query Games {
     games {
-      id
-      title
+      games {
+        id
+        title
+      }
+      graph {
+        nodes
+        relationships
+      }
     }
   }
 `;

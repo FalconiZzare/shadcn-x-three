@@ -190,7 +190,7 @@ const AnimatedCrawler = ({ className }) => {
     initHeader();
     initAnimation();
     addListeners();
-  }, []);
+  }, [crawlerColor]);
 
   return (
     <div className={cn("absolute inset-0 z-[-1] h-full w-full", className)}>

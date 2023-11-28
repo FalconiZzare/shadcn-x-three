@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Check, X } from "lucide-react";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogFooter,
   DialogHeader,
@@ -36,6 +37,11 @@ const AddGame = ({ toast, data }) => {
     }
 
     setSelectedPlatforms([...selectedPlatforms, item]);
+  };
+
+  const handleClose = () => {
+    setTitle("");
+    setSelectedPlatforms([]);
   };
 
   const handleAdd = async () => {
@@ -91,7 +97,7 @@ const AddGame = ({ toast, data }) => {
             Add Game
           </Button>
         </DialogTrigger>
-        <DialogContent className={"max-w-[350px] sm:max-w-[400px]"}>
+        <DialogContent className={"h-[400px] max-w-[350px] sm:max-w-[400px]"}>
           <DialogHeader>
             <p className={"text-xl font-semibold"}>Add a new game</p>
           </DialogHeader>
@@ -144,10 +150,13 @@ const AddGame = ({ toast, data }) => {
               </DropdownMenu>
             </div>
           </div>
-          <DialogFooter className={"gap-4"}>
+          <DialogFooter className={"gap-2"}>
             <Button variant={"outline"} onClick={handleAdd}>
               Add Game
             </Button>
+            <DialogClose onClick={handleClose} on>
+              <Button variant={"outline"}>Close</Button>
+            </DialogClose>
           </DialogFooter>
         </DialogContent>
       </Dialog>

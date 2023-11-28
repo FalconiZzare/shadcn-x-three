@@ -24,6 +24,16 @@ type Games {
     title: String!
 }
 
+type GamesQuery {
+    games: [Games]
+    graph: GraphVisual
+}
+
+type GraphVisual {
+    nodes: String
+    relationships: String
+}
+
 type Mutation {
     addGame(game: AddGameInput!): GameMutationResponse!
     deleteGame(id: ID!): GameMutationResponse!
@@ -34,7 +44,7 @@ type Query {
     author(id: ID!): Authors
     authors: [Authors]
     game(id: ID!): Games
-    games: [Games]
+    games: GamesQuery
     review(id: ID!): Reviews
     reviews: [Reviews]
 }
