@@ -21,7 +21,7 @@ const Earth = () => {
     }
   };
 
-  const stylizedEarth = useGLTF(`${pathBuilder()}3DModels/stylized_planet/stylized_planet.glb`);
+  const stylizedEarth = useGLTF(`./3DModels/stylized_planet/stylized_planet.glb`);
   return <primitive object={stylizedEarth.scene} scale={2.5} position-y={0} rotation-y={0} />;
 };
 
