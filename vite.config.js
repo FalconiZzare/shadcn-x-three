@@ -13,5 +13,5 @@ export default defineConfig({
   server: {
     host: true
   },
-  base: '/shadcn-x-three'
+  base: '/shadcn-x-three/'
 });
