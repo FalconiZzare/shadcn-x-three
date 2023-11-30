@@ -17,10 +17,15 @@ type GameMutationResponse {
     response: ServerResponse!
 }
 
+type GameQuery {
+    game: Games
+    graph: GraphVisual
+}
+
 type Games {
     id: ID!
     platform: [String!]!
-    reviews: [Reviews!]
+    reviews: ReviewsQuery
     title: String!
 }
 
@@ -43,10 +48,10 @@ type Mutation {
 type Query {
     author(id: ID!): Authors
     authors: [Authors]
-    game(id: ID!): Games
+    game(id: ID!): GameQuery
     games: GamesQuery
     review(id: ID!): Reviews
-    reviews: [Reviews]
+    reviews: ReviewsQuery
 }
 
 type Reviews {
@@ -55,6 +60,11 @@ type Reviews {
     game: Games!
     id: ID!
     rating: Int!
+}
+
+type ReviewsQuery {
+    graph: GraphVisual
+    reviews: [Reviews]
 }
 
 type ServerResponse {
