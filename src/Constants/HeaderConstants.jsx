@@ -1,4 +1,4 @@
-import { Activity, Webhook } from "lucide-react";
+import { Salad, Webhook } from "lucide-react";
 import Rotator from "@/layouts/Header/Rotator.jsx";
 
 export const HeaderData = [
@@ -63,10 +63,10 @@ export const HeaderData = [
     megaMenu: true,
     megaMenuContent: [
       {
-        title: "Interactive Particle",
-        description: "Interactive Particles with Three.js",
-        icon: <Activity className={"h-[85px] w-[85px] animate-pulse self-center"} />,
-        href: "/interactive-particle",
+        title: "Nutritionix",
+        description: "Get food nutrients information",
+        icon: <Salad className={"h-[85px] w-[85px] animate-pulse self-center"} />,
+        href: "/nutritionix",
         isExternal: false
       },
       {
@@ -74,13 +74,25 @@ export const HeaderData = [
         description: "View a wide selection of your favorite games!",
         href: "/games",
         isExternal: false
+      },
+      {
+        title: "Interactive Particle",
+        description: "Interactive Particles with Three.js",
+        href: "/interactive-particle",
+        isExternal: false
       }
     ]
   },
+  // {
+  //   title: "Weather",
+  //   megaMenu: false,
+  //   href: "/weather-app",
+  //   isExternal: false
+  // },
   {
-    title: "Weather",
+    title: "Login",
     megaMenu: false,
-    href: "/weather-app",
+    href: "/login",
     isExternal: false
   },
   {

@@ -1,8 +1,8 @@
 import { useQuery } from "@apollo/client";
 import { getGame } from "@/api/games.js";
-import { ChaoticOrbit } from "@uiball/loaders";
+import "ldrs/chaoticOrbit";
 import { useParams } from "react-router-dom";
-import { GraphVisualizer } from "@neo4j-devtools/arc";
+// import { GraphVisualizer } from "@neo4j-devtools/arc";
 
 const Game = () => {
   const { id } = useParams();
@@ -13,7 +13,7 @@ const Game = () => {
   return (
     <div className={"mt-10 flex h-auto flex-col items-center justify-center"}>
       {loading ? (
-        <ChaoticOrbit size={40} speed={1.7} color={"hsl(var(--foreground))"} />
+        <l-chaotic-orbit size={40} speed={1.7} color={"hsl(var(--foreground))"} />
       ) : error ? (
         <p className={"capitalize text-red-600"}>{`${error.message}!`}</p>
       ) : data?.game ? (
@@ -42,19 +42,19 @@ const Game = () => {
               ))}
             </div>
           </div>
-          <div className={"m-10 h-[600px] w-[94%] border rounded-lg"}>
-            <GraphVisualizer
-              autocompleteRelationships={false}
-              nodes={[
-                ...JSON.parse(data?.game?.graph?.nodes),
-                ...JSON.parse(data?.game?.game?.reviews?.graph?.nodes)
-              ]}
-              relationships={[
-                ...JSON.parse(data?.game?.graph?.relationships),
-                ...JSON.parse(data?.game?.game?.reviews?.graph?.relationships)
-              ]}
-              initialZoomToFit
-            />
+          <div className={"m-10 h-[600px] w-[94%] rounded-lg border"}>
+            {/*<GraphVisualizer*/}
+            {/*  autocompleteRelationships={false}*/}
+            {/*  nodes={[*/}
+            {/*    ...JSON.parse(data?.game?.graph?.nodes),*/}
+            {/*    ...JSON.parse(data?.game?.game?.reviews?.graph?.nodes)*/}
+            {/*  ]}*/}
+            {/*  relationships={[*/}
+            {/*    ...JSON.parse(data?.game?.graph?.relationships),*/}
+            {/*    ...JSON.parse(data?.game?.game?.reviews?.graph?.relationships)*/}
+            {/*  ]}*/}
+            {/*  initialZoomToFit*/}
+            {/*/>*/}
           </div>
         </div>
       ) : (

@@ -1,11 +1,11 @@
 import GameCard from "@/components/GraphQL/GameCard.jsx";
 import { deleteGame, getGames } from "@/api/games.js";
 import { useMutation, useQuery } from "@apollo/client";
-import { ChaoticOrbit } from "@uiball/loaders";
+import "ldrs/chaoticOrbit";
 import { Toaster } from "@/components/ui/toaster.jsx";
 import { useToast } from "@/components/ui/use-toast";
 import AddGame from "@/components/GraphQL/AddGame.jsx";
-import { GraphVisualizer } from "@neo4j-devtools/arc";
+// import { GraphVisualizer } from "@neo4j-devtools/arc";
 
 const Games = () => {
   const { loading, error, data } = useQuery(getGames);
@@ -42,7 +42,7 @@ const Games = () => {
     <div className={"flex h-auto flex-col"}>
       {loading ? (
         <div className={"flex h-full flex-col items-center justify-center"}>
-          <ChaoticOrbit size={40} speed={1.7} color={"hsl(var(--foreground))"} />
+          <l-chaotic-orbit size={40} speed={1.7} color={"hsl(var(--foreground))"} />
         </div>
       ) : error ? (
         <div className={"flex h-full flex-col items-center justify-center"}>
@@ -73,12 +73,12 @@ const Games = () => {
           </div>
           <div className={"m-10 flex min-h-[600px] justify-center"}>
             <div className={" h-full w-9/12 rounded-lg border"}>
-              <GraphVisualizer
-                autocompleteRelationships={false}
-                nodes={JSON.parse(data.games.graph.nodes)}
-                relationships={JSON.parse(data.games.graph.relationships)}
-                initialZoomToFit
-              />
+              {/*<GraphVisualizer*/}
+              {/*  autocompleteRelationships={false}*/}
+              {/*  nodes={JSON.parse(data.games.graph.nodes)}*/}
+              {/*  relationships={JSON.parse(data.games.graph.relationships)}*/}
+              {/*  initialZoomToFit*/}
+              {/*/>*/}
             </div>
           </div>
         </>

@@ -13,7 +13,7 @@ export const Icons = {
         fill="currentColor"
         fillRule="evenodd"
         clipRule="evenodd"
-      ></path>
+      />
     </svg>
   ),
 
@@ -31,7 +31,102 @@ export const Icons = {
         fill="currentColor"
         fillRule="evenodd"
         clipRule="evenodd"
+      />
+    </svg>
+  ),
+
+  facebook: (props) => (
+    <svg
+      width="15"
+      height="15"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+    </svg>
+  ),
+
+  google: (props) => (
+    <svg width="15" height="15" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <clipPath id="g">
+        <path d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z" />
+      </clipPath>
+      <g className="colors" clipPath="url(#g)">
+        <path fill="#FBBC05" d="M0 37V11l17 13z" />
+        <path fill="#EA4335" d="M0 11l17 13 7-6.1L48 14V0H0z" />
+        <path fill="#34A853" d="M0 37l30-23 7.9 1L48 0v48H0z" />
+        <path fill="#4285F4" d="M48 48L17 24l-4-3 35-10z" />
+      </g>
+    </svg>
+  ),
+
+  x: (props) => (
+    <svg width="15" height="15" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z" />
+    </svg>
+  ),
+
+  apple: (props) => (
+    <svg width="15" height="15" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 315" {...props}>
+      <path d="M213.803 167.03c.442 47.58 41.74 63.413 42.197 63.615c-.35 1.116-6.599 22.563-21.757 44.716c-13.104 19.153-26.705 38.235-48.13 38.63c-21.05.388-27.82-12.483-51.888-12.483c-24.061 0-31.582 12.088-51.51 12.871c-20.68.783-36.428-20.71-49.64-39.793c-27-39.033-47.633-110.3-19.928-158.406c13.763-23.89 38.36-39.017 65.056-39.405c20.307-.387 39.475 13.662 51.889 13.662c12.406 0 35.699-16.895 60.186-14.414c10.25.427 39.026 4.14 57.503 31.186c-1.49.923-34.335 20.044-33.978 59.822M174.24 50.199c10.98-13.29 18.369-31.79 16.353-50.199c-15.826.636-34.962 10.546-46.314 23.828c-10.173 11.763-19.082 30.589-16.678 48.633c17.64 1.365 35.66-8.964 46.64-22.262" />
+    </svg>
+  ),
+
+  instagram: (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id="instagram" {...props}>
+      <linearGradient
+        id="a"
+        x1="1.464"
+        x2="14.536"
+        y1="14.536"
+        y2="1.464"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop offset="0" stopColor="#FFC107"></stop>
+        <stop offset=".507" stopColor="#F44336"></stop>
+        <stop offset=".99" stopColor="#9C27B0"></stop>
+      </linearGradient>
+      <path
+        fill="url(#a)"
+        d="M11 0H5a5 5 0 0 0-5 5v6a5 5 0 0 0 5 5h6a5 5 0 0 0 5-5V5a5 5 0 0 0-5-5zm3.5 11c0 1.93-1.57 3.5-3.5 3.5H5c-1.93 0-3.5-1.57-3.5-3.5V5c0-1.93 1.57-3.5 3.5-3.5h6c1.93 0 3.5 1.57 3.5 3.5v6z"
       ></path>
+      <linearGradient
+        id="b"
+        x1="5.172"
+        x2="10.828"
+        y1="10.828"
+        y2="5.172"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop offset="0" stopColor="#FFC107"></stop>
+        <stop offset=".507" stopColor="#F44336"></stop>
+        <stop offset=".99" stopColor="#9C27B0"></stop>
+      </linearGradient>
+      <path
+        fill="url(#b)"
+        d="M8 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0 6.5A2.503 2.503 0 0 1 5.5 8c0-1.379 1.122-2.5 2.5-2.5s2.5 1.121 2.5 2.5c0 1.378-1.122 2.5-2.5 2.5z"
+      ></path>
+      <linearGradient
+        id="c"
+        x1="11.923"
+        x2="12.677"
+        y1="4.077"
+        y2="3.323"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop offset="0" stopColor="#FFC107"></stop>
+        <stop offset=".507" stopColor="#F44336"></stop>
+        <stop offset=".99" stopColor="#9C27B0"></stop>
+      </linearGradient>
+      <circle cx="12.3" cy="3.7" r=".533" fill="url(#c)"></circle>
+    </svg>
+  ),
+
+  github: (props) => (
+    <svg width="15" height="15" aria-hidden="true" viewBox="0 0 16 16" {...props}>
+      <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
     </svg>
   )
 };

@@ -9,25 +9,27 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle
 } from "@/components/ui/navigation-menu.jsx";
-import Rotator from "@/layouts/Header/Rotator.jsx";
+// import Rotator from "@/layouts/Header/Rotator.jsx";
 import MobileNav from "@/layouts/Header/MobileNav.jsx";
 import ButtonGroup from "@/layouts/Header/ButtonGroup.jsx";
 import { HeaderData } from "@/Constants/HeaderConstants.jsx";
+import Lotus from "@/assets/lotus.webp";
 
 const Header = () => {
   return (
     <header
       className={
-        "fixed top-0 z-50 flex h-14 w-full flex-col items-center justify-center border-b border-ring backdrop-blur-xl sm:h-20"
+        "fixed top-0 z-50 flex h-14 w-full flex-col items-center justify-center border-b border-ring backdrop-blur-xl"
       }
     >
-      <div className={"relative flex w-11/12 items-center justify-between xl:w-10/12 2xl:w-8/12"}>
+      <div className={"relative flex w-11/12 items-center justify-between xl:w-10/12 2xl:w-9/12"}>
         <MobileNav />
         <Link className={"flex cursor-pointer items-center justify-start"} to={"/"}>
-          <div className={"mr-4"}>
-            <Rotator className={"h-[30px] w-[30px] lg:h-[40px] lg:w-[40px]"} />
+          <div className={"mr-1 select-none"}>
+            {/*<Rotator className={"h-[30px] w-[30px]"} />*/}
+            <img src={Lotus} alt={"Lotus"} className={"pointer-events-none w-[70px]"} />
           </div>
-          <div className={"text-lg font-bold lg:text-xl"}>shadcn x three</div>
+          <div className={"text-lg font-bold lg:text-xl"}>Up 4 Nutrition</div>
         </Link>
         <NavigationMenu className={"hidden lg:flex"}>
           <NavigationMenuList>
