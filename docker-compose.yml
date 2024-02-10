@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  web:
+    build:
+      context: .
+    ports:
+      - "80:80"
+
+  api:
+    image: mongo:4.0-xenial
+    environment:
+      DB_URL: mongodb://db/db_data
+
+  db:
+    image: mongo:4.0-xenial
+    ports:
+      - "27017:27017"
+    volumes:
+      - db_data:/data/db
+
+volumes:
+  db_data:
