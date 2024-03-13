@@ -10,6 +10,7 @@ import Game from "@/components/GraphQL/Game.jsx";
 import Games from "@/components/GraphQL/Games.jsx";
 import InstantSearch from "@/components/Nutritionix/InstantSearch.jsx";
 import Authentication from "@/components/Authentication/Authentication.jsx";
+import DnDLayout from "@/components/DragNDrop/DnDLayout.jsx";
 
 const RouteTable = () => {
   return (
@@ -24,6 +25,7 @@ const RouteTable = () => {
         <Route path={"/games"} element={<Games />} />
         <Route path={"/game/:id"} element={<Game />} />
         <Route path={"/login"} element={<Authentication />} />
+        <Route path={"/dnd-kit"} element={<DnDLayout />} />
         <Route path={"*"} element={<Error />} />
       </Routes>
     </>

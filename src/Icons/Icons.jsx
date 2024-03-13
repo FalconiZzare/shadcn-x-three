@@ -1,3 +1,5 @@
+import "./Icons.css"
+
 export const Icons = {
   moon: (props) => (
     <svg
@@ -128,5 +130,121 @@ export const Icons = {
     <svg width="15" height="15" aria-hidden="true" viewBox="0 0 16 16" {...props}>
       <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
     </svg>
+  ),
+
+  image: (props) => (
+    <svg
+      width="115"
+      height="56"
+      viewBox="0 0 115 56"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <g
+        // className="CbirAnimLogo-Shadow"
+        className="transition-transform duration-300 ease transform scale-[.65] origin-[57px_50px] group-hover:scale-[1]"
+        filter="url(#filter0_f)"
+      >
+        <ellipse
+          cx="56.4476"
+          cy="50"
+          rx="41"
+          ry="2"
+          fill="hsl(var(--muted))"
+          fillOpacity="0.4"
+        ></ellipse>
+      </g>
+      <g
+        // className="CbirAnimLogo-LeftImage"
+        className="transition-transform duration-300 ease transform translate-x-[35px] origin-[21px_44px] group-hover:translate-x-0 -rotate-[8deg]"
+        opacity="0.6"
+      >
+        <rect x="1.16431" y="14.7832" width="40" height="29.3333" rx="8" fill="#3F3F40"></rect>
+        <ellipse cx="12.5642" cy="24.1165" rx="3.33333" ry="3.33333" fill="#575859"></ellipse>
+        <path
+          d="M33.184 44.1165L7.15301 44.1165C3.8455 44.1165 1.16424 41.4352 1.16424 38.1277L7.13882 32.9341C8.75139 31.5323 11.0765 31.3101 12.9254 32.3811L33.184 44.1165Z"
+          fill="#707273"
+          fillOpacity="0.4"
+        ></path>
+        <path
+          d="M41.1642 33.6686L41.1642 36.1165C41.1642 40.5348 37.5825 44.1165 33.1642 44.1165L7.34912 44.1165L24.7394 27.9193C26.3806 26.3906 28.839 26.1419 30.7531 27.3108L41.1642 33.6686Z"
+          fill="#575859"
+        ></path>
+      </g>
+      <g
+        // className="CbirAnimLogo-RightImage"
+        className={"transition-transform duration-300 ease transform -translate-x-[35px] origin-[93px_44px] group-hover:translate-x-0 rotate-[8deg]"}
+        opacity="0.6"
+      >
+        <rect x="72.9703" y="14.8699" width="40" height="29.3333" rx="8" fill="#3F3F40"></rect>
+        <ellipse cx="84.3701" cy="24.2032" rx="3.33333" ry="3.33333" fill="#575859"></ellipse>
+        <path
+          d="M104.99 44.2031L78.959 44.2031C75.6515 44.2031 72.9703 41.5219 72.9703 38.2144L78.9449 33.0208C80.5575 31.619 82.8826 31.3968 84.7315 32.4678L104.99 44.2031Z"
+          fill="#707273"
+          fillOpacity="0.4"
+        ></path>
+        <path
+          d="M112.97 33.7552L112.97 36.2031C112.97 40.6214 109.389 44.2031 104.97 44.2031L79.1551 44.2031L96.5454 28.0058C98.1867 26.4772 100.645 26.2285 102.559 27.3974L112.97 33.7552Z"
+          fill="#575859"
+        ></path>
+      </g>
+      <g
+        // className="CbirAnimLogo-FrontImage"
+        className={"transition-transform duration-300 ease transform translate-y-[4px] group-hover:translate-y-0"}
+        clipPath="url(#clip2)"
+      >
+        <rect x="27.4476" width="60" height="44" rx="8" fill="black"></rect>
+        <rect x="27.4476" width="60" height="44" rx="8" fill="#3F3F40"></rect>
+        <circle
+          // className="CbirAnimLogo-FrontImageSun"
+          className={"transition-transform duration-500 ease delay-150 transform origin-[33px_5px] group-hover:scale-[1.2]"}
+          cx="44.5474"
+          cy="14"
+          r="5"
+          fill="#FDDE55"
+          // fill="hsl(var(--primary))"
+        ></circle>
+        <path
+          // className="CbirAnimLogo-FrontImageSmallRock"
+          className={"transition-transform duration-500 ease delay-150 transform group-hover:-translate-x-[2px] group-hover:translate-y-[2px]"}
+          d="M75.4775 44H27.4476V35.0168L37.7574 26.0546C39.37 24.6528 41.6951 24.4307 43.5439 25.5017L75.4775 44Z"
+          fill="#FDDE55"
+          // fill="hsl(var(--primary))"
+          fillOpacity="0.4"
+        ></path>
+        <path
+          // className="CbirAnimLogo-FrontImageBigRock"
+          className={"transition-transform duration-500 ease delay-150 transform group-hover:translate-x-[3px] group-hover:translate-y-[3px]"}
+          d="M87.4477 28.3282V44.0001H36.7249L64.1984 18.4113C65.8396 16.8827 68.2979 16.634 70.2121 17.8029L87.4477 28.3282Z"
+          fill="#FDDE55"
+          // fill="hsl(var(--primary))"
+        ></path>
+      </g>
+      <defs>
+        <filter
+          id="filter0_f"
+          x="11.4476"
+          y="44"
+          width="90"
+          height="12"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix"></feFlood>
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          ></feBlend>
+          <feGaussianBlur stdDeviation="2" result="effect1_foregroundBlur"></feGaussianBlur>
+        </filter>
+        <clipPath id="clip2">
+          <rect x="27.4476" width="60" height="44" rx="8" fill="black"></rect>
+        </clipPath>
+      </defs>
+    </svg>
   )
 };
+

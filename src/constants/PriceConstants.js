@@ -21,7 +21,7 @@ export const PriceData = [
     planContent: [
       "Access to standard workouts and nutrition plans",
       "24/7 Priority Support",
-      "1 on 1 virtual coaching session every month",
+      "1 on 1 virtual session every week",
       "Exclusive content and early access to new features"
     ],
     planButtonName: "Get Started"

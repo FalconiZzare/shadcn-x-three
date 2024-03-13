@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import { ThemeProvider } from "@/layouts/Theme/ThemeProvider.jsx";
-import { BrowserRouter, HashRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import RouteTable from "@/routes/RouteTable.jsx";
 import Header from "@/layouts/Header/Header.jsx";
 import { themes } from "@/registry/themes.js";
 import { useConfig } from "@/hooks/use-config.js";
 import Footer from "@/layouts/Footer/Footer.jsx";
+import { Toaster } from "@/components/ui/sonner.jsx";
 
 const App = () => {
   const [config] = useConfig();
@@ -44,6 +45,7 @@ const App = () => {
           <RouteTable />
           <Footer />
         </div>
+        <Toaster position={"bottom-right"} closeButton />
       </ThemeProvider>
     </HashRouter>
   );

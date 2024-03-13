@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/accordion.jsx";
 import { Button } from "@/components/ui/button.jsx";
 import Rotator from "@/layouts/Header/Rotator.jsx";
-import { HeaderData } from "@/Constants/HeaderConstants.jsx";
+import { HeaderData } from "@/constants/HeaderConstants.jsx";
 import { Separator } from "@/components/ui/separator.jsx";
 
 const MobileNav = () => {

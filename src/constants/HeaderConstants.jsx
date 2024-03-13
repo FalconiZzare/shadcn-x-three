@@ -80,6 +80,12 @@ export const HeaderData = [
         description: "Interactive Particles with Three.js",
         href: "/interactive-particle",
         isExternal: false
+      },
+      {
+        title: "dnd-kit",
+        description: "Drag and Drop Demo",
+        href: "/dnd-kit",
+        isExternal: false
       }
     ]
   },

@@ -5,13 +5,19 @@ import react from "@vitejs/plugin-react";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: "/shadcn-x-three/",
+  base: "/",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src")
     }
   },
+  preview: {
+    port: 8080,
+    strictPort: true,
+  },
   server: {
-    host: true
+    host: true,
+    // port: 8080,
+    // strictPort: true
   }
 });

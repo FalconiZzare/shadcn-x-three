@@ -8,6 +8,9 @@ import { Label } from "@/components/ui/label.jsx";
 import { Dumbbell, PlusCircle, Utensils } from "lucide-react";
 import ClickAwayListener from "react-click-away-listener";
 import "ldrs/waveform";
+import { waveform } from "ldrs";
+
+waveform.register();
 
 import FoodTable from "@/components/Nutritionix/FoodTable.jsx";
 import { itemSearch, instantSearch, naturalExercise, naturalNutrients } from "@/api/nutritionix.js";

@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--primary)) rgba(0, 0, 0, 0) !important;
+}
+
 .btn-rounded {
   @apply h-7 w-7 rounded-md sm:min-h-[2.5rem] sm:min-w-[2.5rem] sm:rounded-lg !important;
 }

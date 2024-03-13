@@ -12,7 +12,7 @@ import {
 // import Rotator from "@/layouts/Header/Rotator.jsx";
 import MobileNav from "@/layouts/Header/MobileNav.jsx";
 import ButtonGroup from "@/layouts/Header/ButtonGroup.jsx";
-import { HeaderData } from "@/Constants/HeaderConstants.jsx";
+import { HeaderData } from "@/constants/HeaderConstants.jsx";
 import Lotus from "@/assets/lotus.webp";
 
 const Header = () => {

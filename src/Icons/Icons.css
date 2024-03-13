@@ -1,0 +1,63 @@
+/*.CbirAnimLogo-Shadow {*/
+/*    transition: transform .25s ease, -webkit-transform .25s ease;*/
+/*    transform: scale(.65);*/
+/*    transform-origin: 57px 50px;*/
+/*}*/
+
+/*.CbirAnimLogo-LeftImage {*/
+/*    transition: transform .25s ease,-webkit-transform .25s ease;*/
+/*    transform: translateX(35px) rotate(0deg);*/
+/*    transform-origin: 21px 44px;*/
+/*}*/
+
+/*.CbirAnimLogo-RightImage {*/
+/*    transition: transform .25s ease,-webkit-transform .25s ease;*/
+/*    transform: translateX(-35px) rotate(0deg);*/
+/*    transform-origin: 93px 44px;*/
+/*}*/
+
+/*.CbirAnimLogo-FrontImage {*/
+/*    transform: translateY(4px);*/
+/*    transition: transform .25s ease,-webkit-transform .25s ease;*/
+/*}*/
+
+/*.CbirAnimLogo-FrontImageSun {*/
+/*    transition: transform .5s ease .15s,-webkit-transform .5s ease .15s;*/
+/*    transform-origin: 33px 5px;*/
+/*}*/
+
+/*.CbirAnimLogo-FrontImageSmallRock {*/
+/*    transition: transform .5s ease .15s,-webkit-transform .5s ease .15s;*/
+/*}*/
+
+/*.CbirAnimLogo-FrontImageBigRock {*/
+/*    transition: transform .5s ease .15s,-webkit-transform .5s ease .15s;*/
+/*}*/
+
+/*.CbirAnimLogo_active .CbirAnimLogo-Shadow {*/
+/*    transform: scale(1)*/
+/*}*/
+
+/*.CbirAnimLogo_active .CbirAnimLogo-FrontImage {*/
+/*    transform: translateY(0)*/
+/*}*/
+
+/*.CbirAnimLogo_active .CbirAnimLogo-FrontImageSun {*/
+/*    transform: scale(1.2)*/
+/*}*/
+
+/*.CbirAnimLogo_active .CbirAnimLogo-FrontImageSmallRock {*/
+/*    transform: translate(-2px, 2px)*/
+/*}*/
+
+/*.CbirAnimLogo_active .CbirAnimLogo-FrontImageBigRock {*/
+/*    transform: translate(3px, 3px)*/
+/*}*/
+
+/*.CbirAnimLogo_active .CbirAnimLogo-LeftImage {*/
+/*    transform: translateX(0) rotate(-8deg)*/
+/*}*/
+
+/*.CbirAnimLogo_active .CbirAnimLogo-RightImage {*/
+/*    transform: translateX(0) rotate(8deg)*/
+/*}*/

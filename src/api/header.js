@@ -7,3 +7,9 @@ export const authHeader = () => {
     "x-app-key": config.APP_KEY
   };
 };
+
+export const noAuthHeader = () => {
+  return {
+    "Content-Type": "multipart/form-data"
+  };
+};
