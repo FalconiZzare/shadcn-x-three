@@ -86,15 +86,21 @@ export const HeaderData = [
         description: "Drag and Drop Demo",
         href: "/dnd-kit",
         isExternal: false
+      },
+      {
+        title: "SuperHero",
+        description: "SuperHero API Tunnel",
+        href: "/superhero",
+        isExternal: false
       }
     ]
   },
-  // {
-  //   title: "Weather",
-  //   megaMenu: false,
-  //   href: "/weather-app",
-  //   isExternal: false
-  // },
+  {
+    title: "Weather",
+    megaMenu: false,
+    href: "/weather-app",
+    isExternal: false
+  },
   {
     title: "Login",
     megaMenu: false,

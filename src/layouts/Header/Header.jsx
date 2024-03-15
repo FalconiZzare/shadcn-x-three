@@ -29,7 +29,7 @@ const Header = () => {
             {/*<Rotator className={"h-[30px] w-[30px]"} />*/}
             <img src={Lotus} alt={"Lotus"} className={"pointer-events-none w-[70px]"} />
           </div>
-          <div className={"text-lg font-bold lg:text-xl"}>Up 4 Nutrition</div>
+          <div className={"text-lg font-bold lg:text-xl"}>shadcn x three</div>
         </Link>
         <NavigationMenu className={"hidden lg:flex"}>
           <NavigationMenuList>

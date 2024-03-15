@@ -40,9 +40,11 @@ const App = () => {
         enableSystem
         disableTransitionOnChange={false}
       >
-        <div className={"relative flex h-screen flex-col pt-14 sm:pt-20"}>
+        <div className={"relative min-h-screen flex flex-col pt-14 sm:pt-20"}>
           <Header />
-          <RouteTable />
+          <div className={"flex-grow"}>
+            <RouteTable />
+          </div>
           <Footer />
         </div>
         <Toaster position={"bottom-right"} closeButton />
