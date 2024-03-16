@@ -6,7 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ScrollArea } from "@/components/ui/scroll-area.jsx";
 import { Label } from "@/components/ui/label.jsx";
 import { Dumbbell, PlusCircle, Utensils } from "lucide-react";
-import ClickAwayListener from "react-click-away-listener";
+import { ClickAwayListener } from "@mui/base/ClickAwayListener";
 import "ldrs/waveform";
 import { waveform } from "ldrs";
 
@@ -14,6 +14,7 @@ waveform.register();
 
 import FoodTable from "@/components/Nutritionix/FoodTable.jsx";
 import { itemSearch, instantSearch, naturalExercise, naturalNutrients } from "@/api/nutritionix.js";
+import { getAvatarFallback } from "@/lib/utils.js";
 
 const InstantSearch = () => {
   const [search, setSearch] = useState("");
@@ -98,11 +99,6 @@ const InstantSearch = () => {
     } catch (err) {
       console.log(err);
     }
-  };
-
-  const getAvatarFallback = (name) => {
-    const parts = name.split(" ");
-    return `${parts[0].charAt(0)}${parts[1] ? parts[1].charAt(0) : ""}`;
   };
 
   const getBurntCalories = () => {

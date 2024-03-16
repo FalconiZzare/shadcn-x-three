@@ -17,7 +17,7 @@ const Packages = () => {
 
   const handleClearFile = () => {
     setImage(null);
-    const imageInput = document.getElementById("picture")
+    const imageInput = document.getElementById("picture");
     if (imageInput) {
       imageInput.value = "";
     }
@@ -46,7 +46,7 @@ const Packages = () => {
         icon: <CheckCircle className={"size-5 text-green-500"} />
       });
 
-      handleClearFile()
+      handleClearFile();
     }
   });
 
@@ -72,12 +72,12 @@ const Packages = () => {
   };
 
   const handleFilePaste = async () => {
-    const auth = await navigator.permissions.query( { name: "clipboard-read" } );
-    if( auth.state !== 'denied' ) {
+    const auth = await navigator.permissions.query({ name: "clipboard-read" });
+    if (auth.state !== "denied") {
       const item_list = await navigator.clipboard.read();
       console.log(item_list[0]);
     }
-  }
+  };
 
   const handleSelectFile = async (e) => {
     fileTypeCheck(e.target.files[0]);
@@ -85,85 +85,84 @@ const Packages = () => {
 
   return (
     <div className={"flex h-full w-full flex-col items-center justify-center gap-8"}>
-      <div className={cn(
-        "relative h-[380px] w-[550px] overflow-hidden rounded-2xl py-2",
-        image && "border border-foreground border-dashed py-0"
-      )}>
-        {
-          image ? (
-            <>
-              <img
-                src={URL.createObjectURL(image)}
-                alt={image.name}
-                className={"pointer-events-none w-full h-full object-cover"}
-              />
-              <XCircle
-                className={"absolute right-2 top-2 text-foreground cursor-pointer bg-background drop-shadow rounded-full"}
-                onClick={handleClearFile}
-              />
-            </>
-          ) : (
-            <div className={"flex h-full w-full flex-col items-center justify-center gap-6"}>
-              <div
-                className={
-                  "ease group flex h-full w-full flex-col items-center justify-center gap-6 rounded-2xl border-2 border-dashed border-[#ffffff1f] transition duration-200 hover:border-[#ffffff33]"
-                }
-              >
-                <Icons.image />
-                <div className={"text-center"}>
-                  <p className={"mb-1 text-[24px]"}>Drag an image here</p>
-                  <p className={"text-[16px] text-muted-foreground"}>or click the button</p>
-                </div>
-                <div className={"flex items-center gap-6"}>
-                  <Button onClick={() => document.getElementById("image").click()}>
-                    Select File
-                    <Label htmlFor={"image"} />
-                    <Input
-                      id={"image"}
-                      type={"file"}
-                      accept="image/png, image/gif, image/jpeg"
-                      className={"hidden"}
-                      onChange={handleSelectFile}
-                    />
-                  </Button>
-                  <Button
-                    variant={"outline"}
-                    onClick={handleFilePaste}
-                  >
-                    Paste from clipboard
-                  </Button>
-                </div>
+      <div
+        className={cn(
+          "relative h-[380px] w-[550px] overflow-hidden rounded-2xl py-2",
+          image && "border border-dashed border-foreground py-0"
+        )}
+      >
+        {image ? (
+          <>
+            <img
+              src={URL.createObjectURL(image)}
+              alt={image.name}
+              className={"pointer-events-none h-full w-full object-cover"}
+            />
+            <XCircle
+              className={
+                "absolute right-2 top-2 cursor-pointer rounded-full bg-background text-foreground drop-shadow"
+              }
+              onClick={handleClearFile}
+            />
+          </>
+        ) : (
+          <div className={"flex h-full w-full flex-col items-center justify-center gap-6"}>
+            <div
+              className={
+                "ease group flex h-full w-full flex-col items-center justify-center gap-6 rounded-2xl border-2 border-dashed border-[#ffffff1f] transition duration-200 hover:border-[#ffffff33]"
+              }
+            >
+              <Icons.image />
+              <div className={"text-center"}>
+                <p className={"mb-1 text-[24px]"}>Drag an image here</p>
+                <p className={"text-[16px] text-muted-foreground"}>or click the button</p>
               </div>
-              <div className={"flex gap-4"}>
-                <div className={"relative flex w-[440px] items-center"}>
-                  {searchUrl && (
-                    <Button
-                      className={
-                        "group absolute right-2 !size-5 rounded-[50%] p-0 hover:bg-transparent"
-                      }
-                      variant={"ghost"}
-                      onClick={() => setSearchUrl("")}
-                    >
-                      <XCircle
-                        className={
-                          "size-5 opacity-20 transition duration-200 ease-in-out group-hover:opacity-70"
-                        }
-                      />
-                    </Button>
-                  )}
+              <div className={"flex items-center gap-6"}>
+                <Button onClick={() => document.getElementById("image").click()}>
+                  Select File
+                  <Label htmlFor={"image"} />
                   <Input
-                    className={"pr-8"}
-                    value={searchUrl}
-                    onChange={(e) => setSearchUrl(e.target.value)}
+                    id={"image"}
+                    type={"file"}
+                    accept="image/png, image/gif, image/jpeg"
+                    className={"hidden"}
+                    onChange={handleSelectFile}
                   />
-                </div>
-                <Button variant={"outline"} disabled={!searchUrl}>
-                  Search
+                </Button>
+                <Button variant={"outline"} onClick={handleFilePaste}>
+                  Paste from clipboard
                 </Button>
               </div>
             </div>
-          )
-        }
+            <div className={"flex gap-4"}>
+              <div className={"relative flex w-[440px] items-center"}>
+                {searchUrl && (
+                  <Button
+                    className={
+                      "group absolute right-2 !size-5 rounded-[50%] p-0 hover:bg-transparent"
+                    }
+                    variant={"ghost"}
+                    onClick={() => setSearchUrl("")}
+                  >
+                    <XCircle
+                      className={
+                        "size-5 opacity-20 transition duration-200 ease-in-out group-hover:opacity-70"
+                      }
+                    />
+                  </Button>
+                )}
+                <Input
+                  className={"pr-8"}
+                  value={searchUrl}
+                  onChange={(e) => setSearchUrl(e.target.value)}
+                />
+              </div>
+              <Button variant={"outline"} disabled={!searchUrl}>
+                Search
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
       <div className={"flex items-center justify-center gap-8"}>
         <div className={`${isPending || !image ? "cursor-no-drop" : "cursor-pointer"}`}>

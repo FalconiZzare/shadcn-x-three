@@ -1,99 +1,184 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { waveform } from "ldrs";
-import ClickAwayListener from "react-click-away-listener";
+import { ClickAwayListener } from "@mui/base/ClickAwayListener";
 import { ScrollArea } from "@/components/ui/scroll-area.jsx";
-import { AlertTriangle } from "lucide-react";
-import { useQuery } from "@tanstack/react-query";
+import { AlertTriangle, ClipboardCheck } from "lucide-react";
+import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { nameSearch } from "@/api/superhero.js";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar.jsx";
+import { getAvatarFallback } from "@/lib/utils.js";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger
+} from "@/components/ui/tooltip.jsx";
+import CodeBlock from "@/components/SuperheroAPI/CodeBlock.jsx";
 
 waveform.register();
 
 const NameSearch = ({ token }) => {
   const [name, setName] = useState("");
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
+  const [codeString, setCodeString] = useState("");
 
-  const { data, refetch, isLoading, isError } = useQuery({
-    queryKey: ["nameSearch"],
-    queryFn: () => {
-      if (!token) {
-        toast("Please set your token first!", {
-          icon: <AlertTriangle className={"size-5 text-red-500"} />
-        });
-
-        return;
-      }
-
-      if (!name) {
-        toast("Please enter a name!", {
-          icon: <AlertTriangle className={"size-5 text-red-500"} />
-        });
-
-        return;
-      }
-
-      setOpen(true);
-
-      return nameSearch(token, name) | {};
+  const { data, mutate, isPending } = useMutation({
+    mutationKey: ["nameSearch"],
+    mutationFn: () => {
+      return nameSearch(token, name);
     },
-    enabled: false
+    onError: (error) => {
+      console.log(error);
+      toast("Server Error", {
+        icon: <AlertTriangle className={"size-5 text-red-500"} />
+      });
+    },
+    onSuccess: () => {
+      setOpen(true);
+    }
   });
 
-  console.log(data);
+  const handleSearch = () => {
+    if (!token) {
+      toast("Please set your token first!", {
+        icon: <AlertTriangle className={"size-5 text-red-500"} />
+      });
+
+      return;
+    }
+
+    if (!name) {
+      toast("Please enter a name!", {
+        icon: <AlertTriangle className={"size-5 text-red-500"} />
+      });
+
+      return;
+    }
+
+    mutate();
+  };
+
+  const handleCopy = async (e, text) => {
+    e.stopPropagation();
+    try {
+      await navigator.clipboard.writeText(text);
+
+      toast("Copied to clipboard!", {
+        icon: <ClipboardCheck className={"size-5 text-green-500"} />
+      });
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
 
   return (
-    <Card className={"w-full min-h-full"}>
+    <Card className={"w-11/12 md:w-full"}>
       <CardHeader className={"items-center"}>
         <CardTitle>Search By Name</CardTitle>
-        <CardDescription>
+        <CardDescription className={"text-center"}>
           This API call helps you in finding the character-id of a character by searching their
-          name.
-          <div className={"relative min-h-full flex flex-col w-full gap-4 pt-4"}>
-            <div className={"flex flex-row w-full gap-4"}>
+          name. You can get the superhero ID from here and use the id on other tabs.
+        </CardDescription>
+        <ClickAwayListener onClickAway={() => setOpen(false)}>
+          <div className={"relative flex w-full flex-col gap-4 pt-4 md:w-6/12"}>
+            <div className={"flex w-full flex-col gap-4 md:flex-row"}>
               <Input
                 id={"item"}
                 type={"text"}
                 placeholder={"e.g. ironman"}
                 onChange={(e) => setName(e.target.value)}
                 value={name}
-                onClick={() => (data && name !== "") && setOpen(true)}
+                onClick={() => name !== "" && setOpen(true)}
               />
-              {isLoading ? (
+              {isPending ? (
                 <Button variant={"outline"} className={"min-w-[80px]"}>
-                  <l-waveform size={"28"} stroke={"2"} speed={"1"} color={"hsl(var(--foreground))"} />
+                  <l-waveform
+                    size={"28"}
+                    stroke={"2"}
+                    speed={"1"}
+                    color={"hsl(var(--foreground))"}
+                  />
                 </Button>
               ) : (
-                <Button variant={"outline"} onClick={refetch} className={"min-w-[80px]"}>
+                <Button variant={"outline"} onClick={handleSearch} className={"min-w-[80px]"}>
                   Search
                 </Button>
               )}
             </div>
             {open && name !== "" && (
-              <ClickAwayListener onClickAway={() => setOpen(false)}>
-                <Card
-                  className={
-                    "absolute h-[300px] z-10 top-16 flex w-full flex-col items-center justify-start gap-4 px-1 py-4"
-                  }
-                >
-                  {(!data || data?.error && data?.response === "error") ? (
-                    <div className={"my-auto capitalize"}>character with given name not found!</div>
-                  ) : (
-                    <ScrollArea className={"h-full px-5"}>Hello</ScrollArea>
-                  )}
-                </Card>
-              </ClickAwayListener>
+              <Card
+                className={
+                  "absolute bottom-28 z-10 flex h-[304px] w-full flex-col items-center justify-center gap-4 px-1 py-4 md:top-16 md:h-[350px]"
+                }
+              >
+                {isPending ? (
+                  <l-waveform
+                    size={"28"}
+                    stroke={"2"}
+                    speed={"1"}
+                    color={"hsl(var(--foreground))"}
+                  />
+                ) : !data || (data?.data.error && data?.data.response === "error") ? (
+                  <div className={"my-auto capitalize"}>character with given name not found!</div>
+                ) : (
+                  <>
+                    <p className={"hidden text-center md:block"}>
+                      Click on any of the cards below to see detailed JSON.
+                    </p>
+                    <ScrollArea className={"h-full w-full px-1 md:px-5"}>
+                      {data &&
+                        data.data.results?.map((item, index) => (
+                          <Button
+                            key={index}
+                            className={"mb-3 w-full justify-start gap-2 px-1 py-7 md:gap-8 lg:px-6"}
+                            variant={"outline"}
+                            onClick={() => {
+                              setCodeString(JSON.stringify(item, null, 2));
+                              setOpen(false);
+                            }}
+                          >
+                            <Avatar>
+                              <AvatarImage src={item.image?.url} alt={item.name} />
+                              <AvatarFallback>{getAvatarFallback(item.name)}</AvatarFallback>
+                            </Avatar>
+                            <p className={"ml-auto text-lg"}>{item.name}</p>
+                            <TooltipProvider delayDuration={300}>
+                              <Tooltip>
+                                <TooltipTrigger asChild>
+                                  <div
+                                    className={
+                                      "ml-auto w-16 rounded-md border bg-background py-1 text-lg"
+                                    }
+                                    onClick={(e) => handleCopy(e, item.id)}
+                                  >
+                                    {item.id}
+                                  </div>
+                                </TooltipTrigger>
+                                <TooltipContent side={"top"}>
+                                  <p>Click to copy!</p>
+                                </TooltipContent>
+                              </Tooltip>
+                            </TooltipProvider>
+                          </Button>
+                        ))}
+                    </ScrollArea>
+                  </>
+                )}
+              </Card>
             )}
           </div>
-        </CardDescription>
+        </ClickAwayListener>
       </CardHeader>
-      <CardContent>
-
-      </CardContent>
+      {codeString && (
+        <CardContent>
+          <CodeBlock codeString={codeString} />
+        </CardContent>
+      )}
     </Card>
   );
 };

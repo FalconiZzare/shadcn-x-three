@@ -1,4 +1,4 @@
-import "./Icons.css"
+import "./Icons.css";
 
 export const Icons = {
   moon: (props) => (
@@ -143,7 +143,7 @@ export const Icons = {
     >
       <g
         // className="CbirAnimLogo-Shadow"
-        className="transition-transform duration-300 ease transform scale-[.65] origin-[57px_50px] group-hover:scale-[1]"
+        className="ease origin-[57px_50px] scale-[.65] transform transition-transform duration-300 group-hover:scale-[1]"
         filter="url(#filter0_f)"
       >
         <ellipse
@@ -157,7 +157,7 @@ export const Icons = {
       </g>
       <g
         // className="CbirAnimLogo-LeftImage"
-        className="transition-transform duration-300 ease transform translate-x-[35px] origin-[21px_44px] group-hover:translate-x-0 -rotate-[8deg]"
+        className="ease origin-[21px_44px] translate-x-[35px] -rotate-[8deg] transform transition-transform duration-300 group-hover:translate-x-0"
         opacity="0.6"
       >
         <rect x="1.16431" y="14.7832" width="40" height="29.3333" rx="8" fill="#3F3F40"></rect>
@@ -174,7 +174,9 @@ export const Icons = {
       </g>
       <g
         // className="CbirAnimLogo-RightImage"
-        className={"transition-transform duration-300 ease transform -translate-x-[35px] origin-[93px_44px] group-hover:translate-x-0 rotate-[8deg]"}
+        className={
+          "ease origin-[93px_44px] -translate-x-[35px] rotate-[8deg] transform transition-transform duration-300 group-hover:translate-x-0"
+        }
         opacity="0.6"
       >
         <rect x="72.9703" y="14.8699" width="40" height="29.3333" rx="8" fill="#3F3F40"></rect>
@@ -191,14 +193,18 @@ export const Icons = {
       </g>
       <g
         // className="CbirAnimLogo-FrontImage"
-        className={"transition-transform duration-300 ease transform translate-y-[4px] group-hover:translate-y-0"}
+        className={
+          "ease translate-y-[4px] transform transition-transform duration-300 group-hover:translate-y-0"
+        }
         clipPath="url(#clip2)"
       >
         <rect x="27.4476" width="60" height="44" rx="8" fill="black"></rect>
         <rect x="27.4476" width="60" height="44" rx="8" fill="#3F3F40"></rect>
         <circle
           // className="CbirAnimLogo-FrontImageSun"
-          className={"transition-transform duration-500 ease delay-150 transform origin-[33px_5px] group-hover:scale-[1.2]"}
+          className={
+            "ease origin-[33px_5px] transform transition-transform delay-150 duration-500 group-hover:scale-[1.2]"
+          }
           cx="44.5474"
           cy="14"
           r="5"
@@ -207,7 +213,9 @@ export const Icons = {
         ></circle>
         <path
           // className="CbirAnimLogo-FrontImageSmallRock"
-          className={"transition-transform duration-500 ease delay-150 transform group-hover:-translate-x-[2px] group-hover:translate-y-[2px]"}
+          className={
+            "ease transform transition-transform delay-150 duration-500 group-hover:-translate-x-[2px] group-hover:translate-y-[2px]"
+          }
           d="M75.4775 44H27.4476V35.0168L37.7574 26.0546C39.37 24.6528 41.6951 24.4307 43.5439 25.5017L75.4775 44Z"
           fill="#FDDE55"
           // fill="hsl(var(--primary))"
@@ -215,7 +223,9 @@ export const Icons = {
         ></path>
         <path
           // className="CbirAnimLogo-FrontImageBigRock"
-          className={"transition-transform duration-500 ease delay-150 transform group-hover:translate-x-[3px] group-hover:translate-y-[3px]"}
+          className={
+            "ease transform transition-transform delay-150 duration-500 group-hover:translate-x-[3px] group-hover:translate-y-[3px]"
+          }
           d="M87.4477 28.3282V44.0001H36.7249L64.1984 18.4113C65.8396 16.8827 68.2979 16.634 70.2121 17.8029L87.4477 28.3282Z"
           fill="#FDDE55"
           // fill="hsl(var(--primary))"
@@ -247,4 +257,3 @@ export const Icons = {
     </svg>
   )
 };
-

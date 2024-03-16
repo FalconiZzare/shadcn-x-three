@@ -1,7 +1,7 @@
 import axios from "axios";
 import { noAuthHeader } from "@/api/header.js";
 
-const BASE_URL = "https://superheroapi.com/api";
+const BASE_URL = "https://cors-anywhere.herokuapp.com/https://superheroapi.com/api";
 
 export const nameSearch = async (token, name) => {
   return await axios.get(`${BASE_URL}/${token}/search/${name}`, {

@@ -40,7 +40,7 @@ const App = () => {
         enableSystem
         disableTransitionOnChange={false}
       >
-        <div className={"relative min-h-screen flex flex-col pt-14 sm:pt-20"}>
+        <div className={"relative flex min-h-screen flex-col pt-14 sm:pt-20"}>
           <Header />
           <div className={"flex-grow"}>
             <RouteTable />

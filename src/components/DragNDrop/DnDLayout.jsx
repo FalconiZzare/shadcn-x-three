@@ -17,10 +17,9 @@ const DnDLayout = () => {
   const [categories, setCategories] = useState([...DnDItems]);
   const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
   const getIndex = (id) => {
-    if (activeId)
-      return categories.findIndex((e) => e.id === id);
+    if (activeId) return categories.findIndex((e) => e.id === id);
 
-    return -1
+    return -1;
   };
   const handleCatDragStart = (event) => {
     setActiveId(event.active.id);
@@ -40,12 +39,11 @@ const DnDLayout = () => {
       // setCategories(categoryCopy)
 
       setCategories((items) => {
-        const oldIndex = items.findIndex(category => category.id === active.id);
-        const newIndex = items.findIndex(category => category.id === over?.id);
+        const oldIndex = items.findIndex((category) => category.id === active.id);
+        const newIndex = items.findIndex((category) => category.id === over?.id);
 
         return arrayMove(items, oldIndex, newIndex);
-      })
-
+      });
     }
 
     setActiveId(null);
@@ -67,7 +65,7 @@ const DnDLayout = () => {
         <SortableContext items={categories} strategy={rectSortingStrategy}>
           <div
             className={
-              "3xl:grid-cols-4 grid w-full grid-cols-1 place-items-center gap-x-4 gap-y-6 md:grid-cols-2 lg:grid-cols-3"
+              "grid w-full grid-cols-1 place-items-center gap-x-4 gap-y-6 md:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4"
             }
           >
             {categories?.map((category, index) => (

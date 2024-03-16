@@ -16,9 +16,9 @@ const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-    <ApolloProvider client={client}>
-      <App />
-    </ApolloProvider>
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>
     </QueryClientProvider>
   </React.StrictMode>
 );

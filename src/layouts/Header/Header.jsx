@@ -31,7 +31,7 @@ const Header = () => {
           </div>
           <div className={"text-lg font-bold lg:text-xl"}>shadcn x three</div>
         </Link>
-        <NavigationMenu className={"hidden lg:flex"}>
+        <NavigationMenu className={"hidden xl:flex"}>
           <NavigationMenuList>
             {HeaderData.map((item, index) =>
               item.megaMenu ? (
