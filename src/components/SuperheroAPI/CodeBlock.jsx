@@ -37,7 +37,7 @@ const CodeBlock = ({ codeString }) => {
       </SyntaxHighlighter>
       <Button
         variant={"outline"}
-        className={"absolute right-5 top-5 bg-zinc-900 px-2 py-5 hover:bg-background"}
+        className={"absolute right-5 top-5 px-2 py-5 hover:bg-background"}
         onClick={handleCopy}
       >
         <Clipboard />
