@@ -24,7 +24,7 @@ waveform.register();
 
 const NameSearch = ({ token }) => {
   const [name, setName] = useState("");
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [codeString, setCodeString] = useState("");
 
   const { data, mutate, isPending } = useMutation({
@@ -93,7 +93,7 @@ const NameSearch = ({ token }) => {
                 placeholder={"e.g. ironman"}
                 onChange={(e) => setName(e.target.value)}
                 value={name}
-                onClick={() => name !== "" && setOpen(true)}
+                onClick={() => data?.data.response === "success" && name !== "" && setOpen(true)}
               />
               {isPending ? (
                 <Button variant={"outline"} className={"min-w-[80px]"}>
@@ -123,7 +123,7 @@ const NameSearch = ({ token }) => {
                     speed={"1"}
                     color={"hsl(var(--foreground))"}
                   />
-                ) : !data || (data?.data.error && data?.data.response === "error") ? (
+                ) : !data || data?.data.error || data?.data.response === "error" ? (
                   <div className={"my-auto capitalize"}>character with given name not found!</div>
                 ) : (
                   <>
