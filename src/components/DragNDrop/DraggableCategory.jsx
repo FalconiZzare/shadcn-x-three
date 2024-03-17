@@ -20,8 +20,8 @@ const DraggableCategory = ({ category, isDragOverlay }) => {
   return (
     <Card
       className={cn(
-        "3xl:w-[450px]] h-[500px] w-[350px] duration-300 ease-in md:w-[360px] lg:w-[440px]",
-        isDragOverlay && "scale-[1.02] border-dashed border-foreground/45 shadow-xl",
+        "3xl:w-[450px] h-[500px] w-[350px] md:w-[360px] lg:w-[440px]",
+        isDragOverlay && "border-dashed border-foreground/45 shadow-xl",
         isDragging && "border-foreground/50 opacity-20 shadow-xl"
       )}
       {...(!isDragOverlay && { ref: setNodeRef })}

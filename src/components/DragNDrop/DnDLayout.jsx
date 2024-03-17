@@ -23,7 +23,6 @@ const DnDLayout = () => {
   };
   const handleCatDragStart = (event) => {
     setActiveId(event.active.id);
-    console.log(event.over?.id);
   };
 
   const handleCatDragEnd = (event) => {
@@ -33,17 +32,18 @@ const DnDLayout = () => {
 
     if (active.id !== over?.id) {
       // const categoryCopy = JSON.parse(JSON.stringify(categories));
+      const categoryCopy = structuredClone(categories);
+
+      const removedCategory = categoryCopy.splice(getIndex(active.id), 1);
+      categoryCopy.splice(getIndex(over.id), 0, removedCategory[0]);
+      setCategories(categoryCopy)
+
+      // setCategories((items) => {
+      //   const oldIndex = items.findIndex((category) => category.id === active.id);
+      //   const newIndex = items.findIndex((category) => category.id === over?.id);
       //
-      // const removedCategory = categoryCopy.splice(getIndex(active.id), 1);
-      // categoryCopy.splice(getIndex(over.id), 0, removedCategory[0]);
-      // setCategories(categoryCopy)
-
-      setCategories((items) => {
-        const oldIndex = items.findIndex((category) => category.id === active.id);
-        const newIndex = items.findIndex((category) => category.id === over?.id);
-
-        return arrayMove(items, oldIndex, newIndex);
-      });
+      //   return arrayMove(items, oldIndex, newIndex);
+      // });
     }
 
     setActiveId(null);
@@ -68,12 +68,12 @@ const DnDLayout = () => {
               "grid w-full grid-cols-1 place-items-center gap-x-4 gap-y-6 md:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4"
             }
           >
-            {categories?.map((category, index) => (
-              <DraggableCategory key={index} category={category} isDragOverlay={false} />
+            {categories?.map((category) => (
+              <DraggableCategory key={category.id} category={category} isDragOverlay={false} />
             ))}
           </div>
         </SortableContext>
-        <DragOverlay adjustScale>
+        <DragOverlay adjustScale dropAnimation={{duration: 400}}>
           {activeId ? (
             <DraggableCategory isDragOverlay category={categories[getIndex(activeId)]} />
           ) : null}
