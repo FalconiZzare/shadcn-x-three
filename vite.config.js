@@ -10,14 +10,5 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "./src")
     }
-  },
-  preview: {
-    port: 8080,
-    strictPort: true
-  },
-  server: {
-    host: true
-    // port: 8080,
-    // strictPort: true
   }
 });
