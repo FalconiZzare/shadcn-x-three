@@ -9,3 +9,9 @@ export const uploadImage = async (image) => {
     headers: noAuthHeader()
   });
 };
+
+export const royal = async () => {
+  return await axios.get(import.meta.env.VITE_ROYAL_API, {
+    headers: noAuthHeader()
+  });
+};

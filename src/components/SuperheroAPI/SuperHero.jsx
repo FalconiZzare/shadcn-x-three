@@ -29,7 +29,7 @@ const SuperHero = () => {
   const [token, setToken] = useState("");
 
   return (
-    <div className={"mt-4 flex h-full w-full flex-col items-center justify-start gap-12"}>
+    <div className={"mt-4 flex h-full w-full flex-col items-center justify-start gap-12 self-start"}>
       <div className={"flex flex-col gap-2"}>
         <Label htmlFor={"token"} className={"ml-1 flex items-center gap-2 text-[18px]"}>
           Your SuperHero API Access Token

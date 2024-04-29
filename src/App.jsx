@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { ThemeProvider } from "@/layouts/Theme/ThemeProvider.jsx";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import RouteTable from "@/routes/RouteTable.jsx";
 import Header from "@/layouts/Header/Header.jsx";
 import { themes } from "@/registry/themes.js";
@@ -33,7 +33,7 @@ const App = () => {
   }, [config]);
 
   return (
-    <HashRouter>
+    <BrowserRouter>
       <ThemeProvider
         defaultTheme={"system"}
         attribute={"class"}
@@ -42,14 +42,14 @@ const App = () => {
       >
         <div className={"relative flex min-h-screen flex-col pt-14 sm:pt-20"}>
           <Header />
-          <div className={"flex-grow"}>
+          <div className={"flex-grow flex items-center justify-center"}>
             <RouteTable />
           </div>
           <Footer />
         </div>
         <Toaster position={"bottom-right"} closeButton />
       </ThemeProvider>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 

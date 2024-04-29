@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ExternalLink, XCircle } from "lucide-react";
 import { Input } from "@/components/ui/input.jsx";
 import { Button } from "@/components/ui/button.jsx";
-import { uploadImage } from "@/api/image.js";
+import { royal, uploadImage } from "@/api/image.js";
 import { useMutation } from "@tanstack/react-query";
 import { Icons } from "@/Icons/Icons.jsx";
 import { Label } from "@/components/ui/label.jsx";
@@ -14,6 +14,7 @@ import { cn } from "@/lib/utils.js";
 const Packages = () => {
   const [image, setImage] = useState(null);
   const [searchUrl, setSearchUrl] = useState("");
+  const [isDragging, setIsDragging] = useState(false);
 
   const handleClearFile = () => {
     setImage(null);
@@ -71,11 +72,24 @@ const Packages = () => {
     }
   };
 
-  const handleFilePaste = async () => {
-    const auth = await navigator.permissions.query({ name: "clipboard-read" });
-    if (auth.state !== "denied") {
-      const item_list = await navigator.clipboard.read();
-      console.log(item_list[0]);
+  const handleFilePaste = (e) => {
+    const items = (e.clipboardData || e.originalEvent.clipboardData).items;
+    const blob = items[0].getAsFile() || items[1].getAsFile();
+
+    fileTypeCheck(blob);
+  };
+
+  const handlePasteClick = async () => {
+    try {
+      const clipboardItems = await navigator.clipboard.read();
+
+      const blob = await clipboardItems[0].getType(
+        clipboardItems[0].types[1] || clipboardItems[0].types[0]
+      );
+
+      fileTypeCheck(blob);
+    } catch (err) {
+      console.log(err.name, err.message);
     }
   };
 
@@ -83,8 +97,42 @@ const Packages = () => {
     fileTypeCheck(e.target.files[0]);
   };
 
+  const handleDrop = async (e) => {
+    e.preventDefault();
+
+    const file = e.dataTransfer.files[0];
+    await fileTypeCheck(file);
+    setIsDragging(false);
+  };
+
+  const handleDragover = (e) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = () => {
+    setIsDragging(false);
+  };
+
+  const { data: royalData, isPending: royalPending, mutate: royalFetch } = useMutation({
+    mutationKey: ["royalFetch"],
+    mutationFn: () => {
+      return royal()
+    },
+    onError: (error) => {
+      console.log(error)
+      toast(error.message, {
+        icon: <AlertTriangle className={"size-5 text-red-500"} />
+      });
+    }
+  })
+
   return (
     <div className={"flex h-full w-full flex-col items-center justify-center gap-8"}>
+      <Button onClick={() => royalFetch()}>
+        Royal Fetch
+      </Button>
+      <p>{royalPending ? "Loading..." : royalData ? royalData?.data.greet : "No Data"}</p>
       <div
         className={cn(
           "relative h-[380px] w-[550px] overflow-hidden rounded-2xl py-2",
@@ -108,31 +156,47 @@ const Packages = () => {
         ) : (
           <div className={"flex h-full w-full flex-col items-center justify-center gap-6"}>
             <div
-              className={
-                "ease group flex h-full w-full flex-col items-center justify-center gap-6 rounded-2xl border-2 border-dashed border-[#ffffff1f] transition duration-200 hover:border-[#ffffff33]"
-              }
+              className={cn(
+                "ease group flex h-full w-full flex-col items-center justify-center gap-6 rounded-2xl border-2 border-dashed transition duration-200 hover:border-[#ffffff33]",
+                isDragging ? "border-[#ffffff33]" : "border-[#ffffff1f]"
+              )}
+              onPaste={handleFilePaste}
+              onDrop={handleDrop}
+              onDragOver={handleDragover}
+              onDragLeave={handleDragLeave}
             >
-              <Icons.image />
-              <div className={"text-center"}>
-                <p className={"mb-1 text-[24px]"}>Drag an image here</p>
-                <p className={"text-[16px] text-muted-foreground"}>or click the button</p>
-              </div>
-              <div className={"flex items-center gap-6"}>
-                <Button onClick={() => document.getElementById("image").click()}>
-                  Select File
-                  <Label htmlFor={"image"} />
-                  <Input
-                    id={"image"}
-                    type={"file"}
-                    accept="image/png, image/gif, image/jpeg"
-                    className={"hidden"}
-                    onChange={handleSelectFile}
-                  />
-                </Button>
-                <Button variant={"outline"} onClick={handleFilePaste}>
-                  Paste from clipboard
-                </Button>
-              </div>
+              {isDragging ? (
+                <>
+                  <Icons.image className={"pointer-events-none scale-150"} />
+                  <div className={"pointer-events-none text-center"}>
+                    <p className={"mb-1 text-[32px]"}>Drop image here</p>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <Icons.image />
+                  <div className={"text-center"}>
+                    <p className={"mb-1 text-[24px]"}>Drag an image here</p>
+                    <p className={"text-[16px] text-muted-foreground"}>or click the button</p>
+                  </div>
+                  <div className={"flex items-center gap-6"}>
+                    <Button onClick={() => document.getElementById("image").click()}>
+                      Select File
+                      <Label htmlFor={"image"} />
+                      <Input
+                        id={"image"}
+                        type={"file"}
+                        accept="image/png, image/gif, image/jpeg"
+                        className={"hidden"}
+                        onChange={handleSelectFile}
+                      />
+                    </Button>
+                    <Button variant={"outline"} onClick={handlePasteClick}>
+                      Paste from clipboard
+                    </Button>
+                  </div>
+                </>
+              )}
             </div>
             <div className={"flex gap-4"}>
               <div className={"relative flex w-[440px] items-center"}>

@@ -6,7 +6,7 @@ import * as THREE from "three";
 
 const Crystal = (props) => {
   const group = useRef();
-  const model = useGLTF("./3DModels/crystal/crystal.glb");
+  const model = useGLTF("/3DModels/crystal/crystal.glb");
   const { nodes, scene, animations } = model;
 
   //DIFFERENT APPROACH//
